@@ -33,6 +33,7 @@
   <script>
 
     $(document).ready(function () {
+
         CustomElement.init((element, _context) => {
 
             config = element.config || {};
@@ -40,55 +41,53 @@
             CustomElement.setHeight(250);
 
             elementName = config.elementToProcess_Codename;
-            
-            /*
-            CustomElement.getElementValue(elementName, (value) => {
-                console.log("Heading element value is: " + value);
-                setupElement(config, value);
+                        
+            CustomElement.getElementValue((value) => {
+                setupElement(value);
             });
-            */
-            
-            /*
-            CustomElement.observeElementChanges([elementName], (changedElementCodenames) => {
-                CustomElement.getElementValue(elementName, (value) => {
-                    setupElement(config, value);
-                });
-                console.log("something changed")
-                console.log(changedElementCodenames[0])
-            });
-            */
 
-        });            
+        });      
+
     });
 
     $("#genButton").click(function() {
-      setupElement(null, null);
+
+      saveElement();
+
     });
 
-    function setupElement(config, value) {
+    function setupElement(value) {
 
-        var prefix = "#footnote-";
-        var outputValue = "";
+      $("#labelValue").text(value);
 
-        function createGuid()  
-        {  
-          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {  
-              var r = Math.random()*16|0, v = c === 'x' ? r : (r&0x3|0x8);  
-              return v.toString(16);  
-          });  
-        }  
-          
-        var guid = createGuid();  
-
-        outputValue = prefix + guid;
-
-        $("#labelValue").text(outputValue);
-
-        // Set the value of this custom element
-        CustomElement.setValue(outputValue);
-
-        console.log("New database value is: " + outputValue);
     }
+
+    function saveElement()
+    {
+
+      var prefix = "#footnote-";
+      var outputValue = "";
+
+      function createGuid()  
+      {  
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {  
+            var r = Math.random()*16|0, v = c === 'x' ? r : (r&0x3|0x8);  
+            return v.toString(16);  
+        });  
+      }  
+        
+      var guid = createGuid();  
+
+      outputValue = prefix + guid;
+
+      $("#labelValue").text(outputValue);
+
+      // Set the value of this custom element
+      CustomElement.setValue(outputValue);
+
+    }
+
+
 
   </script>
 </body>
