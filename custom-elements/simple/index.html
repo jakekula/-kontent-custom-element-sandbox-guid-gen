@@ -40,11 +40,9 @@
 
             CustomElement.setHeight(250);
 
-            elementName = config.elementToProcess_Codename;
+            var currentValue = CustomElement.value;
                         
-            CustomElement.getElementValue((value) => {
-                setupElement(value);
-            });
+            setupElement(currentValue);
 
         });      
 
