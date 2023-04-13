@@ -72,22 +72,14 @@
 
             CustomElement.setHeight(250);
 
-            CustomElement.getElementValue(elementName, (value) => {
-                setupElement(config, value);
-            });
-
-            CustomElement.observeElementChanges([elementName], (changedElementCodenames) => {
-                CustomElement.getElementValue(elementName, (value) => {
-                    setupElement(config, value);
-                });
-            });
+            setupElement(config);
 
         });            
     });
 
 
 
-    function setupElement(config, value) {
+    function setupElement(config) {
 
         var prefix = "#footnote-";
         var outputValue = "";
