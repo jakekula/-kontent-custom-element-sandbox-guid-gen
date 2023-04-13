@@ -36,13 +36,14 @@
 
         CustomElement.init((element, _context) => {
 
-            config = element.config || {};
-
-            CustomElement.setHeight(250);
+              CustomElement.setHeight(250);
 
             var currentValue = CustomElement.value;
 
             console.log("Current value: " + currentValue);
+            console.log("Current value: " + element.value);
+            console.log("Current value: " + element.outputValue);
+            console.log("Current value: " + element.currentValue);
                         
             setupElement(currentValue);
 
