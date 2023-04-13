@@ -44,6 +44,12 @@
 
             CustomElement.setHeight(250);
 
+            CustomElement.observeElementChanges([elementName], (changedElementCodenames) => {
+                CustomElement.getElementValue(elementName, (value) => {
+                    setupElement(config, value);
+                });
+            });
+
         });            
     });
 
