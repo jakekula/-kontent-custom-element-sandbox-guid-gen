@@ -29,11 +29,6 @@
   <h4>Footnote ID</h4>
   <span id="labelValue"></span> &nbsp; <a href="#" id="genButton">GEN</a>
 
-  <div class="disabled_overlay">
-    <p>The element is currently disabled!</p>
-  </div>
-  
-
   <!-- Custom element logic -->
   <script>
 
@@ -44,20 +39,29 @@
 
             CustomElement.setHeight(250);
 
+            elementName = config.elementToProcess_Codename;
+
+            CustomElement.getElementValue(elementName, (value) => {
+                console.log("Heading element value is: " + value);
+                setupElement(config, value);
+            });
+
             CustomElement.observeElementChanges([elementName], (changedElementCodenames) => {
                 CustomElement.getElementValue(elementName, (value) => {
                     setupElement(config, value);
                 });
+                console.log("something changed")
+                console.log(changedElementCodenames[0])
             });
 
         });            
     });
 
-    $( "#genButton" ).click(function() {
-      setupElement();
+    $("#genButton").click(function() {
+      //setupElement();
     });
 
-    function setupElement() {
+    function ssetupElement(config, value) {
 
         var prefix = "#footnote-";
         var outputValue = "";
@@ -78,6 +82,8 @@
 
         // Set the value of this custom element
         CustomElement.setValue(outputValue);
+
+        console.log("New database value is: " + outputValue);
     }
 
   </script>
