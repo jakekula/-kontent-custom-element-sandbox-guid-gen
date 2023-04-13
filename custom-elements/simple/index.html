@@ -41,11 +41,12 @@
 
             elementName = config.elementToProcess_Codename;
 
-            
+            /*
             CustomElement.getElementValue(elementName, (value) => {
                 console.log("Heading element value is: " + value);
                 setupElement(config, value);
             });
+            */
 
             CustomElement.observeElementChanges([elementName], (changedElementCodenames) => {
                 CustomElement.getElementValue(elementName, (value) => {
